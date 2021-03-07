@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 정제1 | 텍스트마이닝</title>
+  <meta name="description" content="Chapter 6 정제1 | 텍스트마이닝 준비" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 정제1 | 텍스트마이닝" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 6 정제1 | 텍스트마이닝 준비" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 정제1 | 텍스트마이닝" />
+  
+  <meta name="twitter:description" content="Chapter 6 정제1 | 텍스트마이닝 준비" />
+  
+
+<meta name="author" content="안도현" />
+
+
+<meta name="date" content="2021-03-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data.html"/>
+<link rel="next" href="clean2.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">데이터커뮤니케이션:텍스트마이닝</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#머리말"><i class="fa fa-check"></i><b>0.1</b> 머리말</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#이책의-구성"><i class="fa fa-check"></i><b>0.2</b> 이책의 구성</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#이책에서-다루지-않은-주제"><i class="fa fa-check"></i><b>0.3</b> 이책에서 다루지 않은 주제</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#도움받은-자료"><i class="fa fa-check"></i><b>0.4</b> 도움받은 자료</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i><b>1</b> 저자{-}</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> 도입</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#텍스트마이닝"><i class="fa fa-check"></i><b>2.1</b> 텍스트마이닝</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#section"><i class="fa fa-check"></i><b>2.2</b> …</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="prep.html"><a href="prep.html"><i class="fa fa-check"></i><b>3</b> 준비</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="prep.html"><a href="prep.html#컴퓨터-인터넷"><i class="fa fa-check"></i><b>3.1</b> 컴퓨터 / 인터넷</a></li>
+<li class="chapter" data-level="3.2" data-path="prep.html"><a href="prep.html#r-r-studio"><i class="fa fa-check"></i><b>3.2</b> R / R Studio</a></li>
+<li class="chapter" data-level="3.3" data-path="prep.html"><a href="prep.html#패키지package"><i class="fa fa-check"></i><b>3.3</b> 패키지(Package)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="prep.html"><a href="prep.html#tidyverse"><i class="fa fa-check"></i><b>3.3.1</b> tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="prep.html"><a href="prep.html#오류error"><i class="fa fa-check"></i><b>3.4</b> 오류(error)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="prep.html"><a href="prep.html#패키지-설치시-겪을-수-있는-오류"><i class="fa fa-check"></i><b>3.4.1</b> 패키지 설치시 겪을 수 있는 오류</a></li>
+<li class="chapter" data-level="3.4.2" data-path="prep.html"><a href="prep.html#실행할-때-겪을-수-있는-오류"><i class="fa fa-check"></i><b>3.4.2</b> 실행할 때 겪을 수 있는 오류</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="prep.html"><a href="prep.html#여러-패키지-한번에-설치"><i class="fa fa-check"></i><b>3.5</b> 여러 패키지 한번에 설치</a></li>
+<li class="chapter" data-level="3.6" data-path="prep.html"><a href="prep.html#코딩-스타일"><i class="fa fa-check"></i><b>3.6</b> 코딩 스타일</a></li>
+<li class="chapter" data-level="3.7" data-path="prep.html"><a href="prep.html#파일경로path-표시"><i class="fa fa-check"></i><b>3.7</b> 파일경로(path) 표시</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="prep.html"><a href="prep.html#슬래시"><i class="fa fa-check"></i><b>3.7.1</b> 슬래시 /</a></li>
+<li class="chapter" data-level="3.7.2" data-path="prep.html"><a href="prep.html#마침표-.-.."><i class="fa fa-check"></i><b>3.7.2</b> 마침표 . ..</a></li>
+<li class="chapter" data-level="3.7.3" data-path="prep.html"><a href="prep.html#물결"><i class="fa fa-check"></i><b>3.7.3</b> 물결 ~</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="prep.html"><a href="prep.html#파일과-객체"><i class="fa fa-check"></i><b>3.8</b> 파일과 객체</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="prep.html"><a href="prep.html#하드디스크에-있는-파일을-다루는-함수"><i class="fa fa-check"></i><b>3.8.1</b> 하드디스크에 있는 파일을 다루는 함수</a></li>
+<li class="chapter" data-level="3.8.2" data-path="prep.html"><a href="prep.html#r환경에-올려진-객체를-다루는-함수"><i class="fa fa-check"></i><b>3.8.2</b> R환경에 올려진 객체를 다루는 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="prep.html"><a href="prep.html#따옴표와-백틱"><i class="fa fa-check"></i><b>3.9</b> 따옴표와 백틱</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="prep.html"><a href="prep.html#겹따옴표-홑따옴표"><i class="fa fa-check"></i><b>3.9.1</b> 겹따옴표 홑따옴표</a></li>
+<li class="chapter" data-level="3.9.2" data-path="prep.html"><a href="prep.html#백틱backquotebacktick"><i class="fa fa-check"></i><b>3.9.2</b> 백틱(backquote/backtick) `</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="prep.html"><a href="prep.html#주의중요"><i class="fa fa-check"></i><b>3.10</b> 주의(중요)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="browse.html"><a href="browse.html"><i class="fa fa-check"></i><b>4</b> 둘러보기</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="browse.html"><a href="browse.html#자료"><i class="fa fa-check"></i><b>4.1</b> 자료</a></li>
+<li class="chapter" data-level="4.2" data-path="browse.html"><a href="browse.html#정제"><i class="fa fa-check"></i><b>4.2</b> 정제</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="browse.html"><a href="browse.html#정돈텍스트tidy-text"><i class="fa fa-check"></i><b>4.2.1</b> 정돈텍스트(tidy text)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="browse.html"><a href="browse.html#토큰화-unnest_tokens-함수"><i class="fa fa-check"></i><b>4.2.2</b> 토큰화: <code>unnest_tokens</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="browse.html"><a href="browse.html#분석"><i class="fa fa-check"></i><b>4.3</b> 분석</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="browse.html"><a href="browse.html#빈도-count-함수"><i class="fa fa-check"></i><b>4.3.1</b> 빈도: <code>count</code> 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="browse.html"><a href="browse.html#소통"><i class="fa fa-check"></i><b>4.4</b> 소통</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="browse.html"><a href="browse.html#시각화"><i class="fa fa-check"></i><b>4.4.1</b> 시각화</a></li>
+<li class="chapter" data-level="4.4.2" data-path="browse.html"><a href="browse.html#한글-폰트-설정"><i class="fa fa-check"></i><b>4.4.2</b> 한글 폰트 설정</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>5</b> 자료</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data.html"><a href="data.html#텍스트-데이터"><i class="fa fa-check"></i><b>5.1</b> 텍스트 데이터</a></li>
+<li class="chapter" data-level="5.2" data-path="data.html"><a href="data.html#수집scraping"><i class="fa fa-check"></i><b>5.2</b> 수집(scraping)</a></li>
+<li class="chapter" data-level="5.3" data-path="data.html"><a href="data.html#이입import"><i class="fa fa-check"></i><b>5.3</b> 이입(import)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="clean1.html"><a href="clean1.html"><i class="fa fa-check"></i><b>6</b> 정제1</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="clean1.html"><a href="clean1.html#토큰화"><i class="fa fa-check"></i><b>6.1</b> 토큰화</a></li>
+<li class="chapter" data-level="6.2" data-path="clean1.html"><a href="clean1.html#불용어stop-words"><i class="fa fa-check"></i><b>6.2</b> 불용어(stop words)</a></li>
+<li class="chapter" data-level="6.3" data-path="clean1.html"><a href="clean1.html#함수의-구체적용-용법"><i class="fa fa-check"></i><b>6.3</b> 함수의 구체적용 용법</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="clean2.html"><a href="clean2.html"><i class="fa fa-check"></i><b>7</b> 정제2: 형태소</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="clean2.html"><a href="clean2.html#mecab"><i class="fa fa-check"></i><b>7.0.1</b> MeCab</a></li>
+<li class="chapter" data-level="7.1" data-path="clean2.html"><a href="clean2.html#rccpmecab"><i class="fa fa-check"></i><b>7.1</b> RccpMeCab</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="anal1freq.html"><a href="anal1freq.html"><i class="fa fa-check"></i><b>8</b> 분석1: 빈도</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="anal1freq.html"><a href="anal1freq.html#단어빈도"><i class="fa fa-check"></i><b>8.1</b> 단어빈도</a></li>
+<li class="chapter" data-level="8.2" data-path="anal1freq.html"><a href="anal1freq.html#kiwc"><i class="fa fa-check"></i><b>8.2</b> KIWC</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="anal2comp.html"><a href="anal2comp.html"><i class="fa fa-check"></i><b>9</b> 분석2: 비교</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="anal2comp.html"><a href="anal2comp.html#오즈비"><i class="fa fa-check"></i><b>9.1</b> 오즈비</a></li>
+<li class="chapter" data-level="9.2" data-path="anal2comp.html"><a href="anal2comp.html#tf-idf"><i class="fa fa-check"></i><b>9.2</b> tf-idf</a></li>
+<li class="chapter" data-level="9.3" data-path="anal2comp.html"><a href="anal2comp.html#사전"><i class="fa fa-check"></i><b>9.3</b> 사전</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="anal2comp.html"><a href="anal2comp.html#정서분석"><i class="fa fa-check"></i><b>9.3.1</b> 정서분석</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="anal3cor.html"><a href="anal3cor.html"><i class="fa fa-check"></i><b>10</b> 분석3: 상관</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="anal3cor.html"><a href="anal3cor.html#상관분석"><i class="fa fa-check"></i><b>10.1</b> 상관분석</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="anal3topic.html"><a href="anal3topic.html"><i class="fa fa-check"></i><b>11</b> 주제모형(topic modeling)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="anal3topic.html"><a href="anal3topic.html#주제모형"><i class="fa fa-check"></i><b>11.1</b> 주제모형</a></li>
+<li class="chapter" data-level="11.2" data-path="anal3topic.html"><a href="anal3topic.html#비지도학습"><i class="fa fa-check"></i><b>11.2</b> 비지도학습</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="anal3topic.html"><a href="anal3topic.html#군집분석"><i class="fa fa-check"></i><b>11.2.1</b> 군집분석</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="anal3topic.html"><a href="anal3topic.html#반지도학습"><i class="fa fa-check"></i><b>11.3</b> 반지도학습</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="anal4network.html"><a href="anal4network.html"><i class="fa fa-check"></i><b>12</b> 연결망 분석</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="anal4network.html"><a href="anal4network.html#tidygraph"><i class="fa fa-check"></i><b>12.1</b> tidygraph</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="comm.html"><a href="comm.html"><i class="fa fa-check"></i><b>13</b> 소통</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="comm.html"><a href="comm.html#시각화-1"><i class="fa fa-check"></i><b>13.1</b> 시각화</a></li>
+<li class="chapter" data-level="13.2" data-path="comm.html"><a href="comm.html#마크다운"><i class="fa fa-check"></i><b>13.2</b> 마크다운</a></li>
+<li class="chapter" data-level="13.3" data-path="comm.html"><a href="comm.html#샤이니"><i class="fa fa-check"></i><b>13.3</b> 샤이니</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="case1.html"><a href="case1.html"><i class="fa fa-check"></i><b>14</b> 사례연구1</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="case1.html"><a href="case1.html#사례1"><i class="fa fa-check"></i><b>14.1</b> 사례1</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="case2.html"><a href="case2.html"><i class="fa fa-check"></i><b>15</b> 사례연구2</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="case2.html"><a href="case2.html#사례1-1"><i class="fa fa-check"></i><b>15.1</b> 사례1</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="case3.html"><a href="case3.html"><i class="fa fa-check"></i><b>16</b> 사례연구3</a></li>
+<li class="chapter" data-level="17" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>17</b> References {-}</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">텍스트마이닝</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="clean1" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> 정제1</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="clean1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## √ ggplot2 3.3.2     √ purrr   0.3.4
+## √ tibble  3.0.4     √ dplyr   1.0.2
+## √ tidyr   1.1.2     √ stringr 1.4.0
+## √ readr   1.4.0     √ forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="clean1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span></code></pre></div>
+<div id="토큰화" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> 토큰화</h2>
+</div>
+<div id="불용어stop-words" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> 불용어(stop words)</h2>
+<p>이번에는 영어문서를 분석해보자. 다음은 한 남자가 사랑하는 여인에게 보내는 편지다.</p>
+<ul>
+<li>The Most Beautiful Love Letters Of All Time <a href="https://theculturetrip.com/europe/france/paris/articles/10-most-beautiful-love-letters-of-all-time/" class="uri">https://theculturetrip.com/europe/france/paris/articles/10-most-beautiful-love-letters-of-all-time/</a></li>
+</ul>
+<pre><code>You still fascinate and inspire me. 
+You influence me for the better. 
+You’re the object of my desire, the #1 Earthly reason for my existence.</code></pre>
+<p>먼저 <code>c</code>함수로 문자벡터를 만들고, <code>tibble</code>함수로 데이터프레임을 구성한 다음, <code>unnest_tokens</code>함수로 토큰화해 정돈텍스트에 저장한다. <code>count</code>함수로 단어의 빈도를 계산한다.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="clean1.html#cb7-1" aria-hidden="true" tabindex="-1"></a>text_v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;You still fascinate and inspire me.</span></span>
+<span id="cb7-2"><a href="clean1.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">You influence me for the better. </span></span>
+<span id="cb7-3"><a href="clean1.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">You’re the object of my desire, the #1 Earthly reason for my existence.&#39;</span>)</span>
+<span id="cb7-4"><a href="clean1.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="clean1.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">text =</span> text_v) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-6"><a href="clean1.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> text)</span></code></pre></div>
+<pre><code>## # A tibble: 25 x 1
+##    word     
+##    &lt;chr&gt;    
+##  1 you      
+##  2 still    
+##  3 fascinate
+##  4 and      
+##  5 inspire  
+##  6 me       
+##  7 you      
+##  8 influence
+##  9 me       
+## 10 for      
+## # ... with 15 more rows</code></pre>
+<p>토큰화한 결과를 보면, 개별 단어를 기준으로 토큰화해 정돈텍스트에 저장한 것을 알수 있다. 이제 <code>count</code>로 단어빈도를 계산해 보자.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="clean1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">text =</span> text_v) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="clean1.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> text) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="clean1.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 19 x 2
+##    word          n
+##    &lt;chr&gt;     &lt;int&gt;
+##  1 the           3
+##  2 for           2
+##  3 me            2
+##  4 my            2
+##  5 you           2
+##  6 1             1
+##  7 and           1
+##  8 better        1
+##  9 desire        1
+## 10 earthly       1
+## 11 existence     1
+## 12 fascinate     1
+## 13 influence     1
+## 14 inspire       1
+## 15 object        1
+## 16 of            1
+## 17 reason        1
+## 18 still         1
+## 19 you’re        1</code></pre>
+<p><code>count</code>로 단어빈도를 계산한 결과를 보면 ‘the’가 3회, ’for,’ ‘me,’ ‘my,’ ’you’가 각각 2회 사용됐다. 즉, 이 글은 너와 나에 대한 글이런 것을 알수 있다. 사랑고백이란 것이 너와 나의 일이므로 타당하다.</p>
+<p>그런데, 분석결과를 보면 단어빈도로 의미를 파악하는데 불필요한 단어도 있다. ‘the,’ ‘for,’ ‘of,’ ‘and’ 등과 같은 관사, 전치사, 접속사들처럼 자주 사용하는 단어들이다. 이런 단어는 불용어(stop words)로 처리해 분석대상에 제외해야 보다 정확한 의미를 파악할 수 있다.</p>
+<p>불용어는 불용어 사전에 모아 놓는데, <code>tidytext</code>패키지는 <code>stop_words</code>에 불용어를 모아 놓았다. 불용어를 데이터셋에서 제거하기 위해서 <code>dplyr</code>패키지의 <code>anti_join</code>함수를 이용한다. 두 데이터프레임에서 겹치는 행을 제외하고 결합(join)한다. 이 경우 불용어사전에 포함된 행을 제외하고 결합한다. (데이터셋을 R세션에 올리는 함수는 <code>data</code>다.)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="clean1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(stop_words)</span>
+<span id="cb11-2"><a href="clean1.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="clean1.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">text =</span> text_v) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="clean1.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> text) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href="clean1.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-6"><a href="clean1.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## # A tibble: 10 x 2
+##    word          n
+##    &lt;chr&gt;     &lt;int&gt;
+##  1 1             1
+##  2 desire        1
+##  3 earthly       1
+##  4 existence     1
+##  5 fascinate     1
+##  6 influence     1
+##  7 inspire       1
+##  8 object        1
+##  9 reason        1
+## 10 you’re        1</code></pre>
+<p>결과를 보면 ‘the,’ ‘for,’ ‘of,’ ‘and’처럼 제거하고 싶은 단어 뿐 아니라, ’you’ ‘me’ ‘my’처럼 제거하지 말아야할 단어도 함께 사라졌다. 보통의 경우, ’you,’ ‘me,’ ‘my’ 등과 같은 대명사도 불용용어로 처리하기 때문이다. 이처럼 기존 불용어사전을 사용할 수 없느면 기존 불용어 사전을 수정하거나, 사용자가 사전을 별도로 만들어 사용해야 한다.</p>
+<p>‘the,’ ‘for,’ ‘of,’ ’and’만 포함돼 있는 간단한 불용어 사전을 직접 만들어 보자. <code>stop_words</code>와 같은 구조를 갖춰야 하므로 먼저 <code>stop_words</code>의 구조부터 살며보자.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="clean1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(stop_words)</span>
+<span id="cb14-2"><a href="clean1.html#cb14-2" aria-hidden="true" tabindex="-1"></a>stop_words <span class="sc">%&gt;%</span> str</span></code></pre></div>
+<pre><code>## tibble [1,149 x 2] (S3: tbl_df/tbl/data.frame)
+##  $ word   : chr [1:1149] &quot;a&quot; &quot;a&#39;s&quot; &quot;able&quot; &quot;about&quot; ...
+##  $ lexicon: chr [1:1149] &quot;SMART&quot; &quot;SMART&quot; &quot;SMART&quot; &quot;SMART&quot; ...</code></pre>
+<p>열이 2개(word와 lexicon)있는 데이터프레임이다. word열에 있는 단어가 불용어고, lexicon열에 있는 값은 불용어 용어집의 이름이다. <code>tidytext</code>패키지의 <code>stop_words</code>에는 세 개의 불용어 용어집(SMART, snowball, onix) 이 포함돼 있다. <code>filter</code>함수로 특정 용어집에 있는 불용어 사전만 골라 이용할 수 있다.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="clean1.html#cb16-1" aria-hidden="true" tabindex="-1"></a>stop_words<span class="sc">$</span>lexicon <span class="sc">%&gt;%</span> unique</span></code></pre></div>
+<pre><code>## [1] &quot;SMART&quot;    &quot;snowball&quot; &quot;onix&quot;</code></pre>
+<p>맞춤 불용어사전에는 불용어만 필요하므로, word열에 ‘the,’ ‘for,’ ‘of,’ ‘and’ 등 4개 단어를 넣은 데이터프레임을 만들어 분석해 보자.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="clean1.html#cb18-1" aria-hidden="true" tabindex="-1"></a>stop_my <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">word =</span> <span class="fu">c</span>(<span class="st">&#39;the&#39;</span>, <span class="st">&#39;for&#39;</span>, <span class="st">&#39;of&#39;</span>, <span class="st">&#39;and&#39;</span>))</span>
+<span id="cb18-2"><a href="clean1.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="clean1.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">text =</span> text_v) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="clean1.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> text) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-5"><a href="clean1.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_my) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-6"><a href="clean1.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## # A tibble: 15 x 2
+##    word          n
+##    &lt;chr&gt;     &lt;int&gt;
+##  1 me            2
+##  2 my            2
+##  3 you           2
+##  4 1             1
+##  5 better        1
+##  6 desire        1
+##  7 earthly       1
+##  8 existence     1
+##  9 fascinate     1
+## 10 influence     1
+## 11 inspire       1
+## 12 object        1
+## 13 reason        1
+## 14 still         1
+## 15 you’re        1</code></pre>
+<p>결과를 보니 ‘me’와 ’my’ 그리고, ’you’와 ’you’re’는 각각 같은 의미이므로 하나로 묶어 줄 필요가 있다. 간단하면서도 귀찮은 방법으로 해결해야 한다. ’my’를 ’me’로 바꿔주고, ’you’re’를 ’you’로 바꿔준다.</p>
+<p><code>dplyr</code>패키지의 <code>recode</code>함수를 이용해 데이터프레임의 값(value)을 바꿀 수 있다. <code>recode</code>는 벡터를 처리하므로, 데이터프레임의 값을 바꾸려면 <code>mutate</code>함수와 함께 이용한다. (주의: <code>recode(벡터, 옛 값 = 새 값</code>)</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="clean1.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">text =</span> text_v) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="clean1.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> text) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="clean1.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">word =</span> <span class="fu">recode</span>(word, <span class="st">`</span><span class="at">my</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;me&quot;</span>, <span class="st">`</span><span class="at">you’re</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;you&quot;</span>) )<span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="clean1.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_my) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="clean1.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## # A tibble: 13 x 2
+##    word          n
+##    &lt;chr&gt;     &lt;int&gt;
+##  1 me            4
+##  2 you           3
+##  3 1             1
+##  4 better        1
+##  5 desire        1
+##  6 earthly       1
+##  7 existence     1
+##  8 fascinate     1
+##  9 influence     1
+## 10 inspire       1
+## 11 object        1
+## 12 reason        1
+## 13 still         1</code></pre>
+<p>결과를 보면 나에 대한 단어인 me가 4회, 너에 대한 단어가 3회 사용됐다.</p>
+<p>이번에는 기존 불용어 사전을 수정해서 사용해보자. <code>stop_words</code>‘에서 ’you,’‘me,’ ’my’를 제거한다. <code>dplyr</code>패키지의 <code>filter</code>함수를 이용해 해당 값이 들어 있는 행(row)을 걸러낸다. <code>!word %in% c("you","you're", "me", "my")</code>는 <code>word열</code>에서 <code>"you","you're", "me", "my"</code>가 포함된 행을 찾아 그 행의 나머지 부분이라는 의미다. <code>!</code>가 <code>~를 제외한 나머지</code>를 의미한다. <code>%in%</code>은 <code>~가 포함된</code>을 의미한다.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="clean1.html#cb24-1" aria-hidden="true" tabindex="-1"></a>stop_md <span class="ot">&lt;-</span> stop_words</span>
+<span id="cb24-2"><a href="clean1.html#cb24-2" aria-hidden="true" tabindex="-1"></a>stop_md <span class="ot">&lt;-</span> stop_md <span class="sc">%&gt;%</span> <span class="fu">filter</span>( <span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;you&quot;</span>,<span class="st">&quot;you&#39;re&quot;</span>, <span class="st">&quot;me&quot;</span>, <span class="st">&quot;my&quot;</span>) ) </span>
+<span id="cb24-3"><a href="clean1.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="clean1.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">text =</span> text_v) <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="clean1.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">output =</span> word, <span class="at">input =</span> text) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-6"><a href="clean1.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">word =</span> <span class="fu">recode</span>(word, <span class="st">`</span><span class="at">my</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;me&quot;</span>, <span class="st">`</span><span class="at">you’re</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;you&quot;</span>) )<span class="sc">%&gt;%</span> </span>
+<span id="cb24-7"><a href="clean1.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_md) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-8"><a href="clean1.html#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## # A tibble: 11 x 2
+##    word          n
+##    &lt;chr&gt;     &lt;int&gt;
+##  1 me            4
+##  2 you           3
+##  3 1             1
+##  4 desire        1
+##  5 earthly       1
+##  6 existence     1
+##  7 fascinate     1
+##  8 influence     1
+##  9 inspire       1
+## 10 object        1
+## 11 reason        1</code></pre>
+<p>결과를 보면 “you,”“you’re,” “me,” “my”를 제거하지 않고 단어빈도를 계산했다.</p>
+</div>
+<div id="함수의-구체적용-용법" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> 함수의 구체적용 용법</h2>
+<p><code>unnest_tokens</code>함수의 다양한 기능은 <code>?unnest_tokens</code>로 살펴보자.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="clean1.html#cb27-1" aria-hidden="true" tabindex="-1"></a>?unnest_tokens</span></code></pre></div>
+<p>R스튜디오 환경의 기본값에서는 오른쪽 아래 도움말이 뜬다. ’unnest_tokens’를 웹에서 검색하면 같은 내용의 문서를 찾을 수 있다.</p>
+<ul>
+<li>unnest_tokens <a href="https://www.rdocumentation.org/packages/tidytext/versions/0.3.0/topics/unnest_tokens" class="uri">https://www.rdocumentation.org/packages/tidytext/versions/0.3.0/topics/unnest_tokens</a></li>
+</ul>
+<p><code>unnest_tokens</code>에 대한 설명서를 보면 먼저 간단한 소개와 함께 용법(usage)가 보인다.</p>
+<pre><code>Usage
+unnest_tokens(
+  tbl,
+  output,
+  input,
+  token = &quot;words&quot;,
+  format = c(&quot;text&quot;, &quot;man&quot;, &quot;latex&quot;, &quot;html&quot;, &quot;xml&quot;),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)</code></pre>
+<p><code>unnest_tokens</code> 함수의 용법에 제시된 인자(arguments)를 어떻게 사용하는지 알려주는 구체적인 설명도 있다.</p>
+<ul>
+<li><p><strong>tbl</strong> A data frame</p></li>
+<li><p><strong>output</strong> Output column to be created as string or symbol.</p></li>
+<li><p><strong>input</strong> Input column that gets split as string or symbol.
+The output/input arguments are passed by expression and support quasiquotation; you can unquote strings and symbols.</p></li>
+<li><p><strong>token</strong> Unit for tokenizing, or a custom tokenizing function. Built-in options are “words” (default), “characters,” “character_shingles,” “ngrams,” “skip_ngrams,” “sentences,” “lines,” “paragraphs,” “regex,” “tweets” (tokenization by word that preserves usernames, hashtags, and URLS ), and “ptb” (Penn Treebank). If a function, should take a character vector and return a list of character vectors of the same length.</p></li>
+<li><p><strong>format</strong> Either “text,” “man,” “latex,” “html,” or “xml.” If not text, this uses the hunspell tokenizer, and can tokenize only by “word”</p></li>
+<li><p><strong>to_lower</strong> Whether to convert tokens to lowercase. If tokens include URLS (such as with token = “tweets”), such converted URLs may no longer be correct.</p></li>
+<li><p><strong>drop</strong> Whether original input column should get dropped. Ignored if the original input and new output column have the same name.</p></li>
+<li><p><strong>collapse</strong> Whether to combine text with newlines first in case tokens (such as sentences or paragraphs) span multiple lines. If NULL, collapses when token method is “ngrams,” “skip_ngrams,” “sentences,” “lines,” “paragraphs,” or “regex.”</p></li>
+<li><p><strong>…</strong> Extra arguments passed on to tokenizers, such as strip_punct for “words” and “tweets,” n and k for “ngrams” and “skip_ngrams,” strip_url for “tweets,” and pattern for “regex.”</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="clean2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-clean1.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
