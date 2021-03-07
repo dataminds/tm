@@ -1,0 +1,112 @@
+--- 
+title: "텍스트마이닝"
+author: "안도현"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "텍스트마이닝 준비"
+---
+
+# Welcome {-}
+
+## 머리말
+
+
+
+## 이책의 구성
+1. 도입
+    1. 텍스트마이닝
+    2. 
+2. 준비
+    1. 컴퓨터
+    2. R / R Studio
+    3. 패키지
+    4...
+3. 둘러보기
+    1. 자료
+    2. 정제
+    3. 분석
+    4. 소통
+4. 자료
+    1. 텍스트 데이터
+    2. 이입(import)
+    3. 수집(scraping)
+5. 정제1
+    1. 토큰화
+    2. 불용어
+6. 정제2    
+    1. 형태소
+7. 분석1
+    1. 단어빈도
+    2. KIWC
+8. 분석2
+    1. 오즈비
+    2. tf-idf
+    3. 사전
+9. 분석3
+    1. 상관
+10. 분석4
+    1. 주제모형(topic modeling)
+11. 분석5    
+    1. 연결망
+12. 소통
+    1. 시각화
+    2. 마크다운
+13. 사례연구1
+14. 사례연구2
+15. 사례연구3
+- 참고문헌
+    - 참고 버스
+
+## 이책에서 다루지 않은 주제
+
+전제: 
+
+- R과 R스튜디오 설치
+
+- 기본적인 R함수 사용가능.
+
+- `dplyr`와 `ggplot2`의 기본적인 사용법 숙지.
+
+
+## 도움받은 자료
+
+[Text Mining with R](https://www.tidytextmining.com)  by Julia Silge and David Robinson
+
+[Doit_textmining](https://youngwoos.github.io/Doit_textmining/) by 김영우 
+
+[QUANTEDA TUTORIALS]([https://tutorials.quanteda.io/)
+
+[R for Data Science](https://r4ds.had.co.nz)  by Hadley Wickam and Garrett Grolermund
+
+[Bilogical Data Science Workshops](https://stephenturner.github.io/workshops/index.html)
+
+[Jenny Bryan’s Stat 545 course](https://stat545.com)
+
+[Carpentries](https://carpentries.org)
+[Software Carpentry](https://software-carpentry.org)
+[Data Carpentry](https://datacarpentry.org)
+
+[David Robinson’s blog](http://varianceexplained.org)
+
+[Marian Schmidt’s MSU NGS Workshop](https://rpubs.com/marschmi/105639)
+
+[Shirin Glander’s blog](https://shiring.github.io/machine_learning/2016/11/27/flu_outcome_ML_post)
+
+
+[R을 이용한 퀀트 투자 포트폴리오 만들기](https://hyunyulhenry.github.io/quant_cookbook/) by 이현열 
+
+
+
+
+
+
+
+![](images/by-nc-sa.png)
+
+The online version of this book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International  License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

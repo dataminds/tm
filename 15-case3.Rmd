@@ -1,0 +1,52 @@
+# 사례연구3
+
+마지막 페이지 
+
+인라인 포맷팅 
+https://bookdown.org/yihui/bookdown/markdown-syntax.html#inline-formatting
+
+*이탤릭*
+
+**진하게**
+
+H~2~O
+
+Fe^2+^
+
+`인라인코드`
+
+Small caps can be produced by the HTML tag span, 
+
+e.g., `<span style="font-variant:small-caps;">Small Caps</span>` 
+
+renders <span style="font-variant:small-caps;">Small Caps</span>
+
+
+HTLM tag로 진하게
+<bold>Bold</bold>
+
+
+링크 <[text](link)>
+
+그림 <![text](path/image.png)>
+
+각주를 달기 위해서는  ^[각주]
+
+
+참고문헌 @type{dks} [@R-bookdown]
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+
+> 블럭 인용은 이런 식으로
+>
+> --- 사람 
+
+
+수식은 $Y = X$
+
+가운데로 넣고 인용하려면 
+$$\begin{array}{ccc}
+x_{11} & x_{12} & x_{13}\\
+x_{21} & x_{22} & x_{23}
+\end{array}$$

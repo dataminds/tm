@@ -1,0 +1,171 @@
+# 정제1
+
+```{r}
+library(tidyverse)
+library(tidytext)
+```
+
+## 토큰화
+
+## 불용어(stop words) 
+
+이번에는 영어문서를 분석해보자. 다음은 한 남자가 사랑하는 여인에게 보내는 편지다. 
+
+ - The Most Beautiful Love Letters Of All Time https://theculturetrip.com/europe/france/paris/articles/10-most-beautiful-love-letters-of-all-time/
+
+```
+You still fascinate and inspire me. 
+You influence me for the better. 
+You’re the object of my desire, the #1 Earthly reason for my existence.
+```
+
+먼저 `c`함수로 문자벡터를 만들고, `tibble`함수로 데이터프레임을 구성한 다음, `unnest_tokens`함수로 토큰화해 정돈텍스트에 저장한다. `count`함수로 단어의 빈도를 계산한다. 
+
+
+```{r}
+text_v <- c('You still fascinate and inspire me.
+You influence me for the better. 
+You’re the object of my desire, the #1 Earthly reason for my existence.')
+
+tibble(text = text_v) %>% 
+  unnest_tokens(output = word, input = text)
+```
+
+토큰화한 결과를 보면, 개별 단어를 기준으로 토큰화해 정돈텍스트에 저장한 것을 알수 있다. 이제 `count`로 단어빈도를 계산해 보자. 
+
+
+```{r}
+tibble(text = text_v) %>% 
+  unnest_tokens(output = word, input = text) %>% 
+  count(word, sort = TRUE)
+```
+
+`count`로 단어빈도를 계산한 결과를 보면 'the'가 3회, 'for', 'me', 'my', 'you'가 각각 2회 사용됐다. 즉, 이 글은 너와 나에 대한 글이런 것을 알수 있다. 사랑고백이란 것이 너와 나의 일이므로 타당하다. 
+
+그런데, 분석결과를 보면 단어빈도로 의미를 파악하는데 불필요한 단어도 있다. 'the', 'for', 'of', 'and' 등과 같은 관사, 전치사, 접속사들처럼 자주 사용하는 단어들이다. 이런 단어는 불용어(stop words)로 처리해 분석대상에 제외해야 보다 정확한 의미를 파악할 수 있다. 
+
+불용어는 불용어 사전에 모아 놓는데, `tidytext`패키지는 `stop_words`에 불용어를 모아 놓았다. 불용어를 데이터셋에서 제거하기 위해서 `dplyr`패키지의 `anti_join`함수를 이용한다. 두 데이터프레임에서 겹치는 행을 제외하고 결합(join)한다. 이 경우 불용어사전에 포함된 행을 제외하고 결합한다. (데이터셋을 R세션에 올리는 함수는 `data`다.)
+
+
+```{r}
+data(stop_words)
+
+tibble(text = text_v) %>%
+  unnest_tokens(output = word, input = text) %>% 
+  anti_join(stop_words) %>% 
+  count(word, sort = TRUE)
+
+```
+
+결과를 보면 'the', 'for', 'of', 'and'처럼 제거하고 싶은 단어 뿐 아니라, 'you' 'me' 'my'처럼 제거하지 말아야할 단어도 함께 사라졌다. 보통의 경우, 'you', 'me', 'my' 등과 같은 대명사도 불용용어로 처리하기 때문이다. 이처럼 기존 불용어사전을 사용할 수 없느면 기존 불용어 사전을 수정하거나, 사용자가 사전을 별도로 만들어 사용해야 한다. 
+
+'the', 'for', 'of', 'and'만 포함돼 있는 간단한 불용어 사전을 직접 만들어 보자. `stop_words`와 같은 구조를 갖춰야 하므로 먼저 `stop_words`의 구조부터 살며보자. 
+
+
+```{r}
+data(stop_words)
+stop_words %>% str
+
+
+```
+
+열이 2개(word와 lexicon)있는 데이터프레임이다. word열에 있는 단어가 불용어고, lexicon열에 있는 값은 불용어 용어집의 이름이다. `tidytext`패키지의 `stop_words`에는 세 개의 불용어 용어집(SMART, snowball, onix) 이 포함돼 있다. `filter`함수로 특정 용어집에 있는 불용어 사전만 골라 이용할 수 있다. 
+
+```{r}
+stop_words$lexicon %>% unique
+
+```
+
+맞춤 불용어사전에는 불용어만 필요하므로, word열에 'the', 'for', 'of', 'and' 등 4개 단어를 넣은 데이터프레임을 만들어 분석해 보자.  
+
+```{r}
+stop_my <- tibble(word = c('the', 'for', 'of', 'and'))
+
+tibble(text = text_v) %>%
+  unnest_tokens(output = word, input = text) %>% 
+  anti_join(stop_my) %>% 
+  count(word, sort = TRUE)
+
+```
+
+결과를 보니 'me'와 'my' 그리고, 'you'와 'you're'는 각각 같은 의미이므로 하나로 묶어 줄 필요가 있다. 간단하면서도 귀찮은 방법으로 해결해야 한다. 'my'를 'me'로 바꿔주고, 'you're'를 'you'로 바꿔준다. 
+
+`dplyr`패키지의 `recode`함수를 이용해 데이터프레임의 값(value)을 바꿀 수 있다. `recode`는 벡터를 처리하므로, 데이터프레임의 값을 바꾸려면 `mutate`함수와 함께 이용한다. (주의: `recode(벡터, 옛 값 = 새 값`) 
+
+
+```{r}
+tibble(text = text_v) %>%
+  unnest_tokens(output = word, input = text) %>% 
+  mutate( word = recode(word, `my` = "me", `you’re` = "you") )%>% 
+  anti_join(stop_my) %>% 
+  count(word, sort = TRUE)
+
+```
+
+결과를 보면 나에 대한 단어인 me가 4회, 너에 대한 단어가 3회 사용됐다. 
+
+
+이번에는 기존 불용어 사전을 수정해서 사용해보자. `stop_words`'에서 'you','me', 'my'를 제거한다. `dplyr`패키지의 `filter`함수를 이용해 해당 값이 들어 있는 행(row)을 걸러낸다. `!word %in% c("you","you're", "me", "my")`는  `word열`에서 `"you","you're", "me", "my"`가 포함된 행을 찾아 그 행의 나머지 부분이라는 의미다. `!`가 `~를 제외한 나머지`를 의미한다. `%in%`은 `~가 포함된`을 의미한다.  
+
+```{r}
+stop_md <- stop_words
+stop_md <- stop_md %>% filter( !word %in% c("you","you're", "me", "my") ) 
+
+tibble(text = text_v) %>%
+  unnest_tokens(output = word, input = text) %>% 
+  mutate( word = recode(word, `my` = "me", `you’re` = "you") )%>% 
+  anti_join(stop_md) %>% 
+  count(word, sort = TRUE)
+
+```
+
+결과를 보면 "you","you're", "me", "my"를 제거하지 않고 단어빈도를 계산했다. 
+
+
+## 함수의 구체적용 용법
+
+`unnest_tokens`함수의 다양한 기능은 `?unnest_tokens`로 살펴보자. 
+
+```{r eval=FALSE}
+?unnest_tokens
+
+```
+
+R스튜디오 환경의 기본값에서는 오른쪽 아래 도움말이 뜬다. 'unnest_tokens'를 웹에서 검색하면 같은 내용의 문서를 찾을 수 있다. 
+
+ - unnest_tokens https://www.rdocumentation.org/packages/tidytext/versions/0.3.0/topics/unnest_tokens
+
+`unnest_tokens`에 대한 설명서를 보면 먼저 간단한 소개와 함께 용법(usage)가 보인다. 
+
+```
+Usage
+unnest_tokens(
+  tbl,
+  output,
+  input,
+  token = "words",
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
+```
+`unnest_tokens` 함수의 용법에 제시된 인자(arguments)를 어떻게 사용하는지 알려주는 구체적인 설명도 있다.
+
+ - **tbl**	A data frame
+ - **output**	Output column to be created as string or symbol.
+ - **input**	Input column that gets split as string or symbol.
+ The output/input arguments are passed by expression and support quasiquotation; you can unquote strings and symbols.
+ - **token**	Unit for tokenizing, or a custom tokenizing function. Built-in options are "words" (default), "characters", "character_shingles", "ngrams", "skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets" (tokenization by word that preserves usernames, hashtags, and URLS ), and "ptb" (Penn Treebank). If a function, should take a character vector and return a list of character vectors of the same length.
+
+ - **format**	Either "text", "man", "latex", "html", or "xml". If not text, this uses the hunspell tokenizer, and can tokenize only by "word"
+ - **to_lower**	Whether to convert tokens to lowercase. If tokens include URLS (such as with token = "tweets"), such converted URLs may no longer be correct.
+ - **drop**	Whether original input column should get dropped. Ignored if the original input and new output column have the same name.
+ - **collapse**	Whether to combine text with newlines first in case tokens (such as sentences or paragraphs) span multiple lines. If NULL, collapses when token method is "ngrams", "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".
+ - **...**	Extra arguments passed on to tokenizers, such as strip_punct for "words" and "tweets", n and k for "ngrams" and "skip_ngrams", strip_url for "tweets", and pattern for "regex".
+ 
+ 
+ 
+
+
